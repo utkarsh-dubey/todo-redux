@@ -1,25 +1,62 @@
-import logo from './logo.svg';
+import { useSelector } from 'react-redux';
 import './App.css';
+import Input from './components/Input';
+import TodoItem from './components/TodoItem';
 
 function App() {
+
+  const data = useSelector((state)=>state);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+      Todo App
+      {data.map(task=>(<TodoItem task={task.task} status={task.status} id={task.id}/>))}
+
+      <Input/>
     </div>
   );
 }
 
 export default App;
+
+// ecommerce->
+
+// store -> js object -> 
+// store = {
+//   product: [
+//     {
+      
+//     },
+//     {
+
+//     }
+//   ],
+//   cart: [
+//     {
+
+//     },
+//     {
+
+//     }
+//   ],
+//   user: {
+
+//   }
+// }
+
+// todolist store = [
+//   {
+//     id: ,
+//     task:  ,
+//     status: 
+//   },
+//   {
+
+//   }
+// ]
+
+// actions - > 
+// 1- addTask
+// 2- markDone
+// 3- removeTask
